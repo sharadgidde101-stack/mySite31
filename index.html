@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Software Classes | Courses & Training</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f5f7fb;
+            color: #222;
+        }
+
+        /* Header */
+        header {
+            background: #172554;
+            color: white;
+            padding: 18px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+            font-size: 15px;
+        }
+
+        nav a:hover {
+            color: #60a5fa;
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 450px;
+            background: linear-gradient(135deg, #172554, #2563eb);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: white;
+            color: #1d4ed8;
+            padding: 13px 25px;
+            border-radius: 7px;
+            text-decoration: none;
+            font-weight: bold;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn:hover {
+            background: #dbeafe;
+        }
+
+        /* Section */
+        section {
+            padding: 60px 7%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title h2 {
+            font-size: 32px;
+            color: #172554;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: #666;
+        }
+
+        /* Course Cards */
+        .courses {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .course-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: 0.3s;
+        }
+
+        .course-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .course-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .course-card h3 {
+            color: #1d4ed8;
+            margin-bottom: 12px;
+        }
+
+        .course-card p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .course-card ul {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+
+        .course-card li {
+            padding: 6px 0;
+            color: #444;
+        }
+
+        .course-card li::before {
+            content: "✓ ";
+            color: #16a34a;
+            font-weight: bold;
+        }
+
+        /* About */
+        .about {
+            background: white;
+        }
+
+        .about-content {
+            max-width: 900px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .about-content p {
+            line-height: 1.8;
+            color: #555;
+            font-size: 17px;
+        }
+
+        /* Contact */
+        .contact {
+            background: #eef4ff;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 7px;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 15px;
+        }
+
+        .form-group textarea {
+            height: 100px;
+            resize: none;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: #2563eb;
+            color: white;
+            padding: 13px;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .submit-btn:hover {
+            background: #1d4ed8;
+        }
+
+        /* Footer */
+        footer {
+            background: #172554;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        /* Mobile */
+        @media (max-width: 700px) {
+
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav a {
+                margin: 0 7px;
+                font-size: 13px;
+            }
+
+            .hero h1 {
+                font-size: 34px;
+            }
+
+            .hero p {
+                font-size: 17px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- Header -->
+<header>
+
+    <div class="logo">
+        TechVision Classes
+    </div>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#courses">Courses</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+</header>
+
+
+<!-- Hero Section -->
+<section class="hero" id="home">
+
+    <div>
+        <h1>Learn Software Development</h1>
+
+        <p>
+            Build your career with industry-ready software courses.
+        </p>
+
+        <a href="#courses" class="btn">
+            Explore Courses
+        </a>
+    </div>
+
+</section>
+
+
+<!-- Courses -->
+<section id="courses">
+
+    <div class="section-title">
+
+        <h2>Software Classes</h2>
+
+        <p>
+            Choose the right technology for your career
+        </p>
+
+    </div>
+
+
+    <div class="courses">
+
+        <!-- Java -->
+        <div class="course-card">
+
+            <div class="course-icon">☕</div>
+
+            <h3>Java Development</h3>
+
+            <p>
+                Learn Java programming from basic to advanced level.
+            </p>
+
+            <ul>
+                <li>Core Java</li>
+                <li>OOP Concepts</li>
+                <li>Collections</li>
+                <li>Exception Handling</li>
+                <li>JDBC</li>
+            </ul>
+
+            <button class="btn"
+                    onclick="selectCourse('Java Development')">
+                Enquire Now
+            </button>
+
+        </div>
+
+
+        <!-- Spring Boot -->
+        <div class="course-card">
+
+            <div class="course-icon">🌱</div>
+
+            <h3>Spring Boot</h3>
+
+            <p>
+                Learn to build professional REST APIs and backend applications.
+            </p>
+
+            <ul>
+                <li>Spring Core</li>
+                <li>Spring Boot</li>
+                <li>REST API</li>
+                <li>Spring Data JPA</li>
+                <li>Microservices</li>
+            </ul>
+
+            <button class="btn"
+                    onclick="selectCourse('Spring Boot')">
+                Enquire Now
+            </button>
+
+        </div>
+
+
+        <!-- Python -->
+        <div class="course-card">
+
+            <div class="course-icon">🐍</div>
+
+            <h3>Python Development</h3>
+
+            <p>
+                Learn Python programming and backend development.
+            </p>
+
+            <ul>
+                <li>Python Basics</li>
+                <li>OOP</li>
+                <li>File Handling</li>
+                <li>Django</li>
+                <li>REST API</li>
+            </ul>
+
+            <button class="btn"
+                    onclick="selectCourse('Python Development')">
+                Enquire Now
+            </button>
+
+        </div>
+
+
+        <!-- Web Development -->
+        <div class="course-card">
+
+            <div class="course-icon">🌐</div>
+
+            <h3>Web Development</h3>
+
+            <p>
+                Learn modern frontend web development.
+            </p>
+
+            <ul>
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>JavaScript</li>
+                <li>Bootstrap</li>
+                <li>React JS</li>
+            </ul>
+
+            <button class="btn"
+                    onclick="selectCourse('Web Development')">
+                Enquire Now
+            </button>
+
+        </div>
+
+
+        <!-- Database -->
+        <div class="course-card">
+
+            <div class="course-icon">🗄️</div>
+
+            <h3>Database</h3>
+
+            <p>
+                Learn database design and SQL programming.
+            </p>
+
+            <ul>
+                <li>SQL</li>
+                <li>MySQL</li>
+                <li>Oracle</li>
+                <li>Joins</li>
+                <li>Stored Procedures</li>
+            </ul>
+
+            <button class="btn"
+                    onclick="selectCourse('Database')">
+                Enquire Now
+            </button>
+
+        </div>
+
+
+        <!-- Testing -->
+        <div class="course-card">
+
+            <div class="course-icon">🧪</div>
+
+            <h3>Software Testing</h3>
+
+            <p>
+                Learn manual and automation testing concepts.
+            </p>
+
+            <ul>
+                <li>Manual Testing</li>
+                <li>Selenium</li>
+                <li>TestNG</li>
+                <li>API Testing</li>
+                <li>Automation</li>
+            </ul>
+
+            <button class="btn"
+                    onclick="selectCourse('Software Testing')">
+                Enquire Now
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- About -->
+<section class="about" id="about">
+
+    <div class="section-title">
+        <h2>About Us</h2>
+    </div>
+
+    <div class="about-content">
+
+        <p>
+            TechVision Classes provides practical software training
+            designed for students, freshers and working professionals.
+            Our courses focus on real-world projects and industry
+            requirements to help students build successful careers
+            in IT.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- Contact -->
+<section class="contact" id="contact">
+
+    <div class="section-title">
+
+        <h2>Contact Us</h2>
+
+        <p>
+            Interested in our courses? Send us your details.
+        </p>
+
+    </div>
+
+
+    <div class="contact-form">
+
+        <form onsubmit="submitForm(event)">
+
+            <div class="form-group">
+
+                <label>Name</label>
+
+                <input
+                    type="text"
+                    id="name"
+                    placeholder="Enter your name"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>Email</label>
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Enter your email"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>Mobile</label>
+
+                <input
+                    type="tel"
+                    id="mobile"
+                    placeholder="Enter mobile number"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>Select Course</label>
+
+                <select id="course">
+
+                    <option value="">
+                        Select Course
+                    </option>
+
+                    <option>Java Development</option>
+                    <option>Spring Boot</option>
+                    <option>Python Development</option>
+                    <option>Web Development</option>
+                    <option>Database</option>
+                    <option>Software Testing</option>
+
+                </select>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>Message</label>
+
+                <textarea
+                    id="message"
+                    placeholder="Enter your message">
+                </textarea>
+
+            </div>
+
+
+            <button class="submit-btn" type="submit">
+                Submit Enquiry
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+
+<!-- Footer -->
+<footer>
+
+    <p>
+        © 2026 TechVision Classes. All Rights Reserved.
+    </p>
+
+</footer>
+
+
+<!-- JavaScript -->
+<script>
+
+    function selectCourse(courseName) {
+
+        document.getElementById("course").value = courseName;
+
+        document.getElementById("contact").scrollIntoView({
+            behavior: "smooth"
+        });
+
+    }
+
+
+    function submitForm(event) {
+
+        event.preventDefault();
+
+        let name = document.getElementById("name").value;
+
+        alert(
+            "Thank you " +
+            name +
+            "! Your enquiry has been submitted."
+        );
+
+    }
+
+</script>
+
+</body>
+</html>
